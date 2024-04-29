@@ -17,8 +17,11 @@ class CHRConnectApp extends StatelessWidget {
       onGenerateTitle: (context) => context.localizations.chr_connect,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {PointerDeviceKind.mouse, ...const MaterialScrollBehavior().dragDevices}),
-      home: const MainScreen(),
+      scrollBehavior: const MaterialScrollBehavior().copyWith(dragDevices: {
+        PointerDeviceKind.mouse,
+        ...const MaterialScrollBehavior().dragDevices
+      }),
+      home: MainScreen(),
       theme: ThemeData(
         colorScheme: AppTheme.colorScheme,
         scaffoldBackgroundColor: AppTheme.colorScheme.background,

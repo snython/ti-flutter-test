@@ -2,16 +2,18 @@ import 'package:chrconnecthpdraft/feature/app/extension/context.dart';
 import 'package:flutter/material.dart';
 
 class Section extends StatelessWidget {
-  const Section({
-    Key? key,
-    this.name,
-    this.child,
-    this.showViewAll = false,
-  }) : super(key: key);
+  const Section(
+      {Key? key,
+      this.name,
+      this.child,
+      this.showViewAll = false,
+      required this.appointmentsViewAllKey})
+      : super(key: key);
 
   final String? name;
   final Widget? child;
   final bool showViewAll;
+  final GlobalKey appointmentsViewAllKey;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class Section extends StatelessWidget {
                 const Spacer(),
                 if (showViewAll)
                   Text(
+                    key: appointmentsViewAllKey,
                     context.localizations.view_all,
                     style: Theme.of(context).textTheme.displaySmall?.copyWith(
                           decoration: TextDecoration.underline,

@@ -7,33 +7,35 @@ import '../section/section.dart';
 import '../section/section_row.dart';
 
 class Reminders extends StatelessWidget {
-  const Reminders({Key? key}) : super(key: key);
+  const Reminders({
+    Key? key,
+    required this.remindersKey,
+  }) : super(key: key);
+
+  final GlobalKey remindersKey;
 
   @override
   Widget build(BuildContext context) {
     return Section(
+        key: remindersKey, // Set the key for the Section widget
         name: context.localizations.reminders,
         showViewAll: true,
+        appointmentsViewAllKey: GlobalKey(),
         child: SectionRow(
           children: [
             ReminderItemGeneral(
               title: "Intake Questionnaire",
               subtitle: 'LMC Optometry & Eye Care',
-              body:
-              'Please, fill out the pre-visit questionnaire',
+              body: 'Please, fill out the pre-visit questionnaire',
               cta: 'Start',
-              ctaStyle: Theme.of(context)
-                  .textButtonTheme
-                  .style
-                  ?.copyWith(
-                backgroundColor: MaterialStatePropertyAll(
-                    Theme.of(context).colorScheme.background),
-                foregroundColor: MaterialStatePropertyAll(
-                    Theme.of(context).colorScheme.primary),
-              ),
+              ctaStyle: Theme.of(context).textButtonTheme.style?.copyWith(
+                    backgroundColor: MaterialStatePropertyAll(
+                        Theme.of(context).colorScheme.background),
+                    foregroundColor: MaterialStatePropertyAll(
+                        Theme.of(context).colorScheme.primary),
+                  ),
               image: CircleAvatar(
-                backgroundImage:
-                Image.asset('images/treatment.png').image,
+                backgroundImage: Image.asset('images/treatment.png').image,
               ),
             ),
             ReminderItemGeneral(
@@ -42,11 +44,9 @@ class Reminders extends StatelessWidget {
               body: 'Counselling Session May 27th, at 10:00 AM',
               cta: 'Check in',
               image: CircleAvatar(
-                backgroundColor: Theme.of(context)
-                    .colorScheme
-                    .tertiaryContainer,
-                backgroundImage:
-                Image.asset('images/check.png').image,
+                backgroundColor:
+                    Theme.of(context).colorScheme.tertiaryContainer,
+                backgroundImage: Image.asset('images/check.png').image,
               ),
             ),
             ReminderItemBilling(
@@ -54,15 +54,12 @@ class Reminders extends StatelessWidget {
               subtitle: 'LMC Optometry & Eye Care',
               body: '\$47.25 CAD',
               cta: 'Pay',
-              ctaStyle: Theme.of(context)
-                  .textButtonTheme
-                  .style
-                  ?.copyWith(
-                backgroundColor: MaterialStatePropertyAll(
-                    Theme.of(context).colorScheme.background),
-                foregroundColor: MaterialStatePropertyAll(
-                    Theme.of(context).colorScheme.primary),
-              ),
+              ctaStyle: Theme.of(context).textButtonTheme.style?.copyWith(
+                    backgroundColor: MaterialStatePropertyAll(
+                        Theme.of(context).colorScheme.background),
+                    foregroundColor: MaterialStatePropertyAll(
+                        Theme.of(context).colorScheme.primary),
+                  ),
               dueDate: 'Due date: May 27th, 2022',
             ),
           ],

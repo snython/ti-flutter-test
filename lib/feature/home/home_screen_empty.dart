@@ -4,20 +4,24 @@ import 'package:chrconnecthpdraft/feature/home/components/section/section.dart';
 import 'package:chrconnecthpdraft/feature/home/components/section/section_column.dart';
 import 'package:chrconnecthpdraft/feature/home/components/section/section_text.dart';
 import 'package:chrconnecthpdraft/feature/home/components/welcoming.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:chrconnecthpdraft/feature/app/extension/context.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeScreenEmpty extends StatelessWidget {
-  const HomeScreenEmpty({Key? key}) : super(key: key);
+  const HomeScreenEmpty({Key? key, required this.moreResourcesKey})
+      : super(key: key);
 
   static const double cardsViewportFraction = 0.9;
+  final GlobalKey moreResourcesKey;
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, constraints) {
         return Stack(
-          children: [
+          children: <Widget>[
             Image.asset('images/background.png'),
             SingleChildScrollView(
               child: Column(
@@ -33,6 +37,7 @@ class HomeScreenEmpty extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   Section(
+                    appointmentsViewAllKey: GlobalKey(),
                     name: context.localizations.reminders,
                     child: SectionText(
                       message: context.localizations.empty_reminders_message,
@@ -40,6 +45,7 @@ class HomeScreenEmpty extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   Section(
+                    appointmentsViewAllKey: GlobalKey(),
                     child: SectionColumn(
                       children: [
                         const LinkSection(
@@ -72,13 +78,14 @@ class HomeScreenEmpty extends StatelessWidget {
                   ),
                   const SizedBox(height: 32),
                   Section(
+                    appointmentsViewAllKey: GlobalKey(),
                     child: SectionColumn(
                       children: [
                         const LinkSection(
                           icon: Icons.inbox_rounded,
                           title: 'Inbox',
                           subtitle:
-                          'Start a conversation with your healthcare provider.',
+                              'Start a conversation with your healthcare provider.',
                         ),
                         const SizedBox(height: 16),
                         SizedBox(
@@ -107,7 +114,7 @@ class HomeScreenEmpty extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  const MoreResources(),
+                  MoreResources(moreResourcesKey: moreResourcesKey),
                   const SizedBox(height: 88),
                 ],
               ),

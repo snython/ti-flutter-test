@@ -6,12 +6,17 @@ import 'section/section.dart';
 import 'section/section_column.dart';
 
 class MoreResources extends StatelessWidget {
-  const MoreResources({Key? key}) : super(key: key);
+  const MoreResources({Key? key, required this.moreResourcesKey})
+      : super(key: key);
+
+  final GlobalKey moreResourcesKey;
 
   @override
   Widget build(BuildContext context) {
     return Section(
+      key: moreResourcesKey,
       name: context.localizations.more_resources,
+      appointmentsViewAllKey: GlobalKey(),
       child: SectionColumn(
         children: [
           Resource(

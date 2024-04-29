@@ -9,16 +9,20 @@ import 'inbox_item.dart';
 class Inbox extends StatelessWidget {
   const Inbox({
     Key? key,
+    required this.inboxKey,
     this.verticalLayout = false,
   }) : super(key: key);
 
   final bool verticalLayout;
+  final GlobalKey inboxKey;
 
   @override
   Widget build(BuildContext context) {
     return Section(
+      key: inboxKey,
       name: context.localizations.inbox,
       showViewAll: true,
+      appointmentsViewAllKey: GlobalKey(),
       child: _sectionLayoutContent(),
     );
   }

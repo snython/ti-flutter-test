@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AppointmentsItem extends StatelessWidget {
-  const AppointmentsItem({
-    Key? key,
-    required this.date,
-    required this.image,
-    this.duration = Duration.zero,
-    this.title = '',
-    this.subtitle = '',
-    this.place = '',
-    this.cta = '',
-    this.calendarSize = const Size(64, 64),
-    this.imageRadius = 12,
-    this.condensed = false,
-  }) : super(key: key);
+  const AppointmentsItem(
+      {Key? key,
+      required this.date,
+      required this.image,
+      this.duration = Duration.zero,
+      this.title = '',
+      this.subtitle = '',
+      this.place = '',
+      this.cta = '',
+      this.calendarSize = const Size(64, 64),
+      this.imageRadius = 12,
+      this.condensed = false,
+      required this.joinButtonKey})
+      : super(key: key);
 
   final String title;
   final String subtitle;
@@ -28,6 +29,7 @@ class AppointmentsItem extends StatelessWidget {
   final double imageRadius;
   final Size calendarSize;
   final bool condensed;
+  final GlobalKey joinButtonKey;
 
   @override
   Widget build(BuildContext context) =>
@@ -111,6 +113,7 @@ class AppointmentsItem extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               TextButton(
+                key: joinButtonKey,
                 onPressed: () {},
                 child: Text(
                   cta,
